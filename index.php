@@ -1,9 +1,9 @@
 <?php
 
-$queryType    = isset($_GET['q']) ? trim($_GET['q']) : null; 
-$responseType = isset($_GET['responseType']) ? trim($_GET['responseType']) : 'text'; 
+$queryType    = isset($_REQUEST['q']) ? trim($_REQUEST['q']) : null; 
+$responseType = isset($_REQUEST['responseType']) ? trim($_REQUEST['responseType']) : 'text'; 
 // Timezone to calculate right hour in your country
-$timezone = isset($_GET['timezone']) ? trim($_GET['timezone']) : "Europe/Berlin"; 
+$timezone = isset($_REQUEST['timezone']) ? trim($_REQUEST['timezone']) : "Europe/Berlin"; 
 date_default_timezone_set($timezone);
 $responseJson = [];
 
@@ -14,13 +14,13 @@ switch($queryType) {
 	  break;
 
   case 'date':
-          $format = isset($_GET['f']) ? trim($_GET['f']) : "Y-m-d";
+          $format = isset($_REQUEST['f']) ? trim($_REQUEST['f']) : "Y-m-d";
           $responseText = date($format); 
           $responseJson['date'] = $responseText;    
 	  break;
 
   case 'time':
-          $format = isset($_GET['f']) ? trim($_GET['f']) : "H:i";
+          $format = isset($_REQUEST['f']) ? trim($_REQUEST['f']) : "H:i";
           $responseText = date($format); 
           $responseJson['time'] = $responseText;    
 	  break;
